@@ -105,29 +105,18 @@ function downloadPDF() {
         // 🧠 DATA (z booking flow – musí existovat globálně)
         let data = bookingData || {};
 
-        // 🆔 ID
-        doc.text(String(data.id || ""), 577, 150);
+const scale = 0.2; // rychlý převod
 
-        // 👤 jméno
-        doc.text(String(data.name || ""), 520, 780);
+doc.text(String(data.id || ""), 577 * scale, 150 * scale);
+doc.text(String(data.name || ""), 520 * scale, 780 * scale);
+doc.text(String(data.email || ""), 520 * scale, 900 * scale);
 
-        // 📧 email
-        doc.text(String(data.email || ""), 520, 900);
+doc.text(String(data.young || 0), 1080 * scale, 1030 * scale);
+doc.text(String(data.adult || 0), 1080 * scale, 1140 * scale);
+doc.text(String(data.senior || 0), 1080 * scale, 1250 * scale);
 
-        // 👶 young
-        doc.text(String(data.young || 0), 1080, 1030);
-
-        // 🧑 adult
-        doc.text(String(data.adult || 0), 1080, 1140);
-
-        // 👴 senior
-        doc.text(String(data.senior || 0), 1080, 1250);
-
-        // 🏝 pokoj
-        doc.text(String(data.room || ""), 350, 1400);
-
-        // 💰 cena
-        doc.text(String(data.total || 0) + " T-t", 520, 1550);
+doc.text(String(data.room || ""), 350 * scale, 1400 * scale);
+doc.text(String(data.total || 0) + " T-t", 520 * scale, 1550 * scale);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
