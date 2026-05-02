@@ -95,37 +95,39 @@ function downloadPDF() {
     const doc = new jsPDF();
 
     let img = new Image();
-    img.src = "template.png"; // 👉 SEM TVOU PNG ŠABLONU
+    img.src = "template.png"; // tvoje šablona
 
     img.onload = function () {
 
+        // 📄 přesné vložení šablony (NEŠKÁLOVAT)
         doc.addImage(img, "PNG", 0, 0, 210, 297);
 
-        const k = 0.2645;
+        // 🧠 DATA (z booking flow – musí existovat globálně)
+        let data = bookingData || {};
 
         // 🆔 ID
-        doc.text(bookingData.id, 380 * k, 85 * k);
+        doc.text(String(data.id || ""), 577, 150);
 
-        // 👤 name
-        doc.text(bookingData.name, 365 * k, 645 * k);
+        // 👤 jméno
+        doc.text(String(data.name || ""), 520, 780);
 
         // 📧 email
-        doc.text(bookingData.email, 365 * k, 735 * k);
+        doc.text(String(data.email || ""), 520, 900);
 
         // 👶 young
-        doc.text(String(bookingData.young), 675 * k, 905 * k);
+        doc.text(String(data.young || 0), 1080, 1030);
 
         // 🧑 adult
-        doc.text(String(bookingData.adult), 675 * k, 995 * k);
+        doc.text(String(data.adult || 0), 1080, 1140);
 
         // 👴 senior
-        doc.text(String(bookingData.senior), 675 * k, 1085 * k);
+        doc.text(String(data.senior || 0), 1080, 1250);
 
-        // 🏝 room
-        doc.text(String(bookingData.room), 150 * k, 1240 * k);
+        // 🏝 pokoj
+        doc.text(String(data.room || ""), 350, 1400);
 
-        // 💰 total
-        doc.text(bookingData.total + " T-t", 245 * k, 1415 * k);
+        // 💰 cena
+        doc.text(String(data.total || 0) + " T-t", 520, 1550);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
