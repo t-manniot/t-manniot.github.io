@@ -10,12 +10,13 @@ body {
 
 /* HERO */
 header {
-    height: 75vh;
-    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
+    height: 55vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: linear-gradient(135deg, #a8edea, #fed6e3, #d0f4de);
+    position: relative;
 }
 
 header h1 {
