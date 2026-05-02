@@ -1,6 +1,6 @@
 let total = 0;
 
-function calculate() {
+function openModal() {
 
     let room = parseInt(document.getElementById("room").value);
 
@@ -12,13 +12,6 @@ function calculate() {
         (young * room * 0.5) +
         (adult * room) +
         (senior * room * 0.25);
-
-    return total;
-}
-
-function openModal() {
-
-    calculate();
 
     document.getElementById("priceText").innerText =
         "Celková cena: " + total + " T-t";
@@ -52,7 +45,6 @@ function closeAll() {
 }
 
 function downloadPDF() {
-
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
