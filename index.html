@@ -2,7 +2,8 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<title>T-MANNIOT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-MANNIOT | Teatropica</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -20,18 +21,33 @@
 <section>
     <h2>O hotelu</h2>
     <p>
-        T-MANNIOT je tropický luxusní hotel na ostrově Teatropica.
-        Prezidentka Taduše jej označila za „budoucnost cestování“.
+        T-MANNIOT je tropický minimalistický resort na ostrově Teatropica.
+        Označen prezidentkou Taduše jako symbol moderního cestování.
     </p>
 </section>
 
 <section>
-    <h2>Tematické pokoje</h2>
+    <h2>Pokoje</h2>
 
-    <div class="card">🌺 Palm Breeze Room <br> 5 T-t / noc / osoba</div>
-    <div class="card">🌊 Ocean Pearl Suite <br> 15 T-t / noc / osoba</div>
-    <div class="card">🌴 Sunset Royal Villa <br> 30 T-t / noc / osoba</div>
+    <div class="card">🌺 Palm Breeze Room — 5 T-t / noc / osoba</div>
+    <div class="card">🌊 Ocean Pearl Suite — 15 T-t / noc / osoba</div>
+    <div class="card">🌴 Sunset Royal Villa — 30 T-t / noc / osoba</div>
 
+</section>
+
+<section>
+    <h2>Lokalita</h2>
+    <p>🌊 Waterpark pár minut od hotelu</p>
+    <p>✈️ Teatropica Airport (TTA)</p>
+    <p>Airlines: FlyTaduše (a možná brzy Hawaiian Air)</p>
+</section>
+
+<section>
+    <h2>Důležité</h2>
+    <p>
+        Ubytování pouze pro hosty s Citizenship Agreement
+        nebo letenkou FlyTaduše.
+    </p>
 </section>
 
 <section>
@@ -39,16 +55,16 @@
 
     <form id="bookingForm">
 
-        <input type="number" id="persons" placeholder="Počet osob">
+        <input type="text" placeholder="Jméno a příjmení Bookujícího" required>
 
-        <label>Young</label>
-        <input type="number" id="young">
+        <label>Young (0–26 let)</label>
+        <input type="number" id="young" value="0">
 
-        <label>Adult</label>
-        <input type="number" id="adult">
+        <label>Adult (27–65 let)</label>
+        <input type="number" id="adult" value="0">
 
-        <label>Senior</label>
-        <input type="number" id="senior">
+        <label>Senior (66+ let)</label>
+        <input type="number" id="senior" value="0">
 
         <label>Pokoj</label>
         <select id="room">
@@ -62,31 +78,33 @@
     </form>
 </section>
 
-<!-- POPUP 1 -->
+<!-- CENA -->
 <div class="modal" id="modal1">
     <div class="modal-content">
         <h3>Cena</h3>
         <p id="priceText"></p>
-        <button onclick="nextModal()">Zaplatit</button>
+        <button onclick="nextModal()">ZAPLATIT</button>
     </div>
 </div>
 
-<!-- POPUP 2 -->
-<div class="modal" id="modal2">
-    <div class="modal-content">
-        <h3>Hotovo</h3>
-        <button onclick="downloadPDF()">Stáhnout potvrzení</button>
-    </div>
-</div>
-
-<script src="script.js"></script>
-    <!-- PAYMENT LOADING -->
+<!-- PAYMENT -->
 <div class="modal" id="paymentModal">
     <div class="modal-content">
         <h3>Processing payment...</h3>
         <div class="loader"></div>
-        <p id="payStatus">Connecting to T-TROPIC Bank...</p>
+        <p id="payStatus">Connecting...</p>
     </div>
 </div>
+
+<!-- FINISH -->
+<div class="modal" id="modal2">
+    <div class="modal-content">
+        <h3>Hotovo ✔</h3>
+        <button onclick="downloadPDF()">Stáhnout potvrzení</button>
+        <button onclick="closeAll()">Zavřít</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
