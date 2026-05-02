@@ -1,42 +1,53 @@
-let totalPrice = 0;
+function calculatePrice() {
 
-function calculate() {
+    let room = parseInt(document.getElementById("room").value);
 
-    const persons = document.getElementById("persons").value;
-    const room = document.getElementById("room").value;
-    const from = new Date(document.getElementById("from").value);
-    const to = new Date(document.getElementById("to").value);
-    const age = document.getElementById("ageGroup").value;
+    let young = document.getElementById("young").value || 0;
+    let adult = document.getElementById("adult").value || 0;
+    let senior = document.getElementById("senior").value || 0;
 
-    const days = (to - from) / (1000 * 60 * 60 * 24);
+    let total =
+        (young * room * 0.5) +
+        (adult * room) +
+        (senior * room * 0.25);
 
-    let discount = 1;
-
-    if (age === "young") discount = 0.5;
-    if (age === "senior") discount = 0.25;
-
-    totalPrice = days * persons * room * discount;
-
-    document.getElementById("price").innerText =
-        "Celková cena: " + totalPrice + " T-t";
+    return total;
 }
 
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+function openModal() {
+    let price = calculatePrice();
 
-    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("priceText").innerText =
+        "Celková cena: " + price + " T-t";
 
-    document.getElementById("summary").innerText =
-        "Rezervace vytvořena. Celková cena: " + totalPrice + " T-t";
-});
+    document.getElementById("modal1").style.display = "flex";
+}
 
+function nextModal() {
+    document.getElementById("modal1").style.display = "none";
+    document.getElementById("modal2").style.display = "flex";
+}
+
+/* PDF */
 function downloadPDF() {
+
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    doc.text("T-MANNIOT HOTEL", 20, 20);
-    doc.text("Reservation Confirmation", 20, 30);
-    doc.text("Total Price: " + totalPrice + " T-t", 20, 50);
+    doc.text("T-MANNIOT RESERVATION", 20, 20);
+    doc.text("Teatropica Island", 20, 30);
 
-    doc.save("reservation.pdf");
+    doc.save("booking.pdf");
 }
+
+/* scroll animace */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+});
