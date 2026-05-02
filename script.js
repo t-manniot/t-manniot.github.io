@@ -92,31 +92,31 @@ function closeAll() {
 function downloadPDF() {
 
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const doc = new jsPDF({
+        unit: "px",
+        format: [1080, 1600] // uprav podle tvé šablony
+    });
 
     let img = new Image();
-    img.src = "template.png"; // tvoje šablona
+    img.src = "template.png";
 
     img.onload = function () {
 
-        // 📄 přesné vložení šablony (NEŠKÁLOVAT)
-        doc.addImage(img, "PNG", 0, 0, 210, 297);
+        // 🖼️ 1:1 šablona
+        doc.addImage(img, "PNG", 0, 0, 1080, 1600);
 
-        // 🧠 DATA (z booking flow – musí existovat globálně)
-        let data = bookingData || {};
+        let d = bookingData;
 
-const scale = 0.2; // rychlý převod
+        doc.text(String(d.id), 577, 150);
+        doc.text(String(d.name), 520, 780);
+        doc.text(String(d.email), 520, 900);
 
-doc.text(String(data.id || ""), 577 * scale, 150 * scale);
-doc.text(String(data.name || ""), 520 * scale, 780 * scale);
-doc.text(String(data.email || ""), 520 * scale, 900 * scale);
+        doc.text(String(d.young), 1080, 1030);
+        doc.text(String(d.adult), 1080, 1140);
+        doc.text(String(d.senior), 1080, 1250);
 
-doc.text(String(data.young || 0), 1080 * scale, 1030 * scale);
-doc.text(String(data.adult || 0), 1080 * scale, 1140 * scale);
-doc.text(String(data.senior || 0), 1080 * scale, 1250 * scale);
-
-doc.text(String(data.room || ""), 350 * scale, 1400 * scale);
-doc.text(String(data.total || 0) + " T-t", 520 * scale, 1550 * scale);
+        doc.text(String(d.room), 350, 1400);
+        doc.text(String(d.total) + " T-t", 520, 1550);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
