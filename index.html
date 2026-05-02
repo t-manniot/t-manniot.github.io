@@ -1,11 +1,88 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <title>T-MANNIOT Hotel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-MANNIOT Hotel</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+}
+
+header {
+    background: url('https://images.unsplash.com/photo-1501117716987-c8e1ecb210c9') center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 60px;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+}
+
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    color: gold;
+}
+
+.card {
+    background: #222;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+</style>
+
 </head>
 <body>
-    <h1>Vítejte v hotelu T-MANNIOT</h1>
-    <p>Luxusní ubytování a nezapomenutelný zážitek.</p>
+
+<header>
+    <h1>T-MANNIOT HOTEL</h1>
+</header>
+
+<section>
+    <h2>O nás</h2>
+    <p>Luxusní hotel T-MANNIOT nabízí prvotřídní služby a nezapomenutelný pobyt.</p>
+</section>
+
+<section>
+    <h2>Pokoje</h2>
+    <div class="card">
+        <h3>Standard Room</h3>
+        <p>Pohodlný pokoj pro každodenní relax.</p>
+    </div>
+    <div class="card">
+        <h3>Luxury Suite</h3>
+        <p>Prostorný apartmán s prémiovým vybavením.</p>
+    </div>
+</section>
+
+<section>
+    <h2>Ceník</h2>
+    <div class="card">
+        <p>Standard: 1500 Kč / noc</p>
+        <p>Luxury: 3500 Kč / noc</p>
+    </div>
+</section>
+
+<section>
+    <h2>Kontakt</h2>
+    <p>Email: info@tmanniot.cz</p>
+    <p>Telefon: +420 123 456 789</p>
+</section>
+
 </body>
 </html>
