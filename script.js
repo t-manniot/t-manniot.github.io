@@ -92,42 +92,33 @@ function closeAll() {
 function downloadPDF() {
 
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF(); // A4 default (mm)
+    const doc = new jsPDF();
 
     let img = new Image();
     img.src = "template.png";
 
+    const sx = 1;
+    const sy = 1;
+
     img.onload = function () {
 
-        // 🖼️ šablona na A4
-       const offsetX = 8; // doladíš 5–15 podle potřeby
+        const pageW = 210;
+        const pageH = 297;
 
-doc.addImage(img, "PNG", offsetX, 0, 210, 297);
+        doc.addImage(img, "PNG", 0, 0, pageW, pageH);
+
         let d = bookingData || {};
 
-        // 🆔 ID rezervace
-        doc.text(String(d.id || ""), 65, 22);
+        doc.text(String(d.id || ""), 65 * sx, 22 * sy);
+        doc.text(String(d.name || ""), 45 * sx, 120 * sy);
+        doc.text(String(d.email || ""), 45 * sx, 138 * sy);
 
-        // 👤 jméno
-        doc.text(String(d.name || ""), 45, 120);
+        doc.text(String(d.young || 0), 125 * sx, 170 * sy);
+        doc.text(String(d.adult || 0), 125 * sx, 185 * sy);
+        doc.text(String(d.senior || 0), 125 * sx, 200 * sy);
 
-        // 📧 email
-        doc.text(String(d.email || ""), 45, 138);
-
-        // 👶 young
-        doc.text(String(d.young || 0), 125, 170);
-
-        // 🧑 adult
-        doc.text(String(d.adult || 0), 125, 185);
-
-        // 👴 senior
-        doc.text(String(d.senior || 0), 125, 200);
-
-        // 🏝 pokoj
-        doc.text(String(d.room || ""), 35, 222);
-
-        // 💰 cena
-        doc.text(String(d.total || 0) + " T-t", 60, 250);
+        doc.text(String(d.room || ""), 35 * sx, 222 * sy);
+        doc.text(String(d.total || 0) + " T-t", 60 * sx, 250 * sy);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
