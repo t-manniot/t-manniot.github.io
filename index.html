@@ -6,50 +6,96 @@
 <title>T-MANNIOT | Teatropica</title>
 
 <link rel="stylesheet" href="style.css">
-
-<!-- knihovna na PDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
 
 <header>
-    <h1>T-MANNIOT</h1>
-    <p>#1 Teatropica Hotel</p>
+    <div class="overlay">
+        <h1>T-MANNIOT</h1>
+        <p>#1 Teatropica Hotel</p>
+    </div>
 </header>
 
 <section>
     <h2>O hotelu</h2>
-    <p>Vítejte na ostrově Teatropica. Tropický ráj, kde luxus potkává přírodu.</p>
+    <p>
+        T-MANNIOT je nejluxusnější tropický hotel na ostrově Teatropica.
+        Kombinuje minimalistický design, přírodní krásu a absolutní klid.
+    </p>
+    <p class="quote">
+        „T-MANNIOT je symbol budoucnosti Teatropicy.“  
+        — prezidentka Teatropicy Taduše
+    </p>
 </section>
 
 <section>
-    <h2>Pokoje & ceny</h2>
-    <div class="card">
-        <h3>Ocean Room</h3>
-        <p>10 T-t / noc</p>
-    </div>
-    <div class="card">
-        <h3>Luxury Palm Suite</h3>
-        <p>100 T-t / noc</p>
-    </div>
+    <h2>Pokoje</h2>
+
+    <div class="card">Standard Room — 5 T-t / noc / osoba</div>
+    <div class="card">Luxury Room — 15 T-t / noc / osoba</div>
+    <div class="card">Suite — 30 T-t / noc / osoba</div>
+
 </section>
 
 <section>
-    <h2>Atrakce</h2>
-    <p>Jen pár kroků od hotelu se nachází tropický waterpark plný skluzavek a bazénů.</p>
+    <h2>Lokalita</h2>
+    <p>🌊 Jen pár minut od hotelu se nachází tropický waterpark.</p>
+    <p>✈️ 5 minut od Teatropica Airport (TTA)</p>
+    <p>Operují zde aerolinky: FlyTaduše (a brzy možná Hawaiian Air)</p>
+</section>
+
+<section>
+    <h2>Důležité</h2>
+    <p>
+        Ubytování je možné pouze pro hosty s platným Citizenship Agreement
+        nebo s letenkou od FlyTaduše.
+    </p>
 </section>
 
 <section>
     <h2>Rezervace</h2>
 
     <form id="bookingForm">
-        <input type="text" placeholder="Jméno" required>
-        <input type="date" required>
-        <input type="number" placeholder="Počet nocí" required>
-        <button type="submit">Vytvořit rezervaci</button>
+
+        <input type="text" placeholder="Jméno a příjmení" required>
+
+        <label>Počet osob:</label>
+        <select id="ageGroup">
+            <option value="young">Young (0–26)</option>
+            <option value="adult">Adult (26–65)</option>
+            <option value="senior">Senior (65+)</option>
+        </select>
+
+        <input type="number" id="persons" placeholder="Počet osob" required>
+
+        <label>Od:</label>
+        <input type="date" id="from" required>
+
+        <label>Do:</label>
+        <input type="date" id="to" required>
+
+        <label>Typ pokoje:</label>
+        <select id="room">
+            <option value="5">Standard (5 T-t)</option>
+            <option value="15">Luxury (15 T-t)</option>
+            <option value="30">Suite (30 T-t)</option>
+        </select>
+
+        <div id="price">Celková cena: 0 T-t</div>
+
+        <button type="button" onclick="calculate()">Spočítat cenu</button>
+        <button type="submit">Potvrdit rezervaci</button>
+
     </form>
 
+</section>
+
+<section id="result" class="hidden">
+    <h2>Rezervace potvrzena</h2>
+    <p id="summary"></p>
+    <button onclick="downloadPDF()">Stáhnout / Tisk</button>
 </section>
 
 <script src="script.js"></script>
