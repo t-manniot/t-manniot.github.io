@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T-MANNIOT | Teatropica</title>
+<title>T-MANNIOT</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -12,6 +12,7 @@
 <body>
 
 <header>
+    <img src="images/logo.png" class="logo">
     <div>
         <h1>T-MANNIOT</h1>
         <p>#1 Teatropica Hotel</p>
@@ -21,50 +22,62 @@
 <section>
     <h2>O hotelu</h2>
     <p>
-        T-MANNIOT je tropický minimalistický resort na ostrově Teatropica.
-        Označen prezidentkou Taduše jako symbol moderního cestování.
+        Tropický minimalistický resort na ostrově Teatropica.
+        Prezidentka Taduše označila hotel jako budoucnost cestování.
     </p>
 </section>
 
 <section>
     <h2>Pokoje</h2>
 
-    <div class="card">🌺 Palm Breeze Room — 5 T-t / noc / osoba</div>
-    <div class="card">🌊 Ocean Pearl Suite — 15 T-t / noc / osoba</div>
-    <div class="card">🌴 Sunset Royal Villa — 30 T-t / noc / osoba</div>
+    <div class="card">
+        <img src="images/room1.jpg">
+        🌺 Palm Breeze — 5 T-t / noc
+    </div>
 
-</section>
+    <div class="card">
+        <img src="images/room2.jpg">
+        🌊 Ocean Pearl — 15 T-t / noc
+    </div>
 
-<section>
-    <h2>Lokalita</h2>
-    <p>🌊 Waterpark pár minut od hotelu</p>
-    <p>✈️ Teatropica Airport (TTA)</p>
-    <p>Airlines: FlyTaduše (a možná brzy Hawaiian Air)</p>
-</section>
+    <div class="card">
+        <img src="images/room3.jpg">
+        🌴 Sunset Villa — 30 T-t / noc
+    </div>
 
-<section>
-    <h2>Důležité</h2>
-    <p>
-        Ubytování pouze pro hosty s Citizenship Agreement
-        nebo letenkou FlyTaduše.
-    </p>
 </section>
 
 <section>
     <h2>Rezervace</h2>
 
-    <form id="bookingForm">
+    <form>
 
-        <input type="text" placeholder="Jméno a příjmení Bookujícího" required>
+        <input type="text" placeholder="Jméno a příjmení">
 
-        <label>Young (0–26 let)</label>
-        <input type="number" id="young" value="0">
+        <input type="email" placeholder="Email">
 
-        <label>Adult (27–65 let)</label>
-        <input type="number" id="adult" value="0">
+        <label>Young (0–26)</label>
+        <select id="young">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
 
-        <label>Senior (66+ let)</label>
-        <input type="number" id="senior" value="0">
+        <label>Adult (27–65)</label>
+        <select id="adult">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <label>Senior (66+)</label>
+        <select id="senior">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
 
         <label>Pokoj</label>
         <select id="room">
@@ -90,7 +103,7 @@
 <!-- PAYMENT -->
 <div class="modal" id="paymentModal">
     <div class="modal-content">
-        <h3>Processing payment...</h3>
+        <h3>OVĚŘOVÁNÍ PŘES T-BANK</h3>
         <div class="loader"></div>
         <p id="payStatus">Connecting...</p>
     </div>
