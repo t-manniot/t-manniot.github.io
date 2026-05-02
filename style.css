@@ -147,9 +147,3 @@ button:hover {
 @keyframes spin {
     100% { transform: rotate(360deg); }
 }
-
-    #modal2 .modal-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
