@@ -116,3 +116,11 @@ button {
 @keyframes spin {
     100% { transform: rotate(360deg); }
 }
+
+section {
+    padding: 50px 20px;
+}
+
+.card {
+    margin: 10px 0;
+}
