@@ -1,39 +1,49 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(#0f2027, #2c5364);
+    font-family: Arial;
+    background: #0b1d1f;
     color: white;
 }
 
 header {
-    height: 100vh;
+    height: 70vh;
     background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.6);
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-blend-mode: overlay;
 }
 
-header h1 {
-    font-size: 70px;
+h1 {
+    font-size: 60px;
 }
 
 section {
     padding: 50px 20px;
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
 }
 
 h2 {
-    color: #00ffd5;
+    color: gold;
 }
 
 .card {
-    background: rgba(255,255,255,0.1);
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.quote {
+    font-style: italic;
+    color: #ccc;
 }
 
 form {
@@ -41,14 +51,23 @@ form {
     flex-direction: column;
 }
 
-input, button {
-    margin: 10px 0;
+input, select, button {
+    margin: 8px 0;
     padding: 10px;
-    border: none;
     border-radius: 5px;
+    border: none;
 }
 
 button {
-    background: #00ffd5;
+    background: gold;
     cursor: pointer;
+}
+
+#price {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
 }
