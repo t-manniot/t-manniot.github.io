@@ -1,12 +1,14 @@
-function calculatePrice() {
+let total = 0;
+
+function calculate() {
 
     let room = parseInt(document.getElementById("room").value);
 
-    let young = document.getElementById("young").value || 0;
-    let adult = document.getElementById("adult").value || 0;
-    let senior = document.getElementById("senior").value || 0;
+    let young = parseInt(document.getElementById("young").value) || 0;
+    let adult = parseInt(document.getElementById("adult").value) || 0;
+    let senior = parseInt(document.getElementById("senior").value) || 0;
 
-    let total =
+    total =
         (young * room * 0.5) +
         (adult * room) +
         (senior * room * 0.25);
@@ -15,10 +17,11 @@ function calculatePrice() {
 }
 
 function openModal() {
-    let price = calculatePrice();
+
+    calculate();
 
     document.getElementById("priceText").innerText =
-        "Celková cena: " + price + " T-t";
+        "Celková cena: " + total + " T-t";
 
     document.getElementById("modal1").style.display = "flex";
 }
@@ -26,15 +29,13 @@ function openModal() {
 function nextModal() {
 
     document.getElementById("modal1").style.display = "none";
-
-    // SHOW FAKE PAYMENT
     document.getElementById("paymentModal").style.display = "flex";
 
     let status = document.getElementById("payStatus");
 
     setTimeout(() => {
-        status.innerText = "Verifying Citizenship Agreement...";
-    }, 1500);
+        status.innerText = "Processing payment...";
+    }, 1000);
 
     setTimeout(() => {
         status.innerText = "Payment approved ✔";
@@ -46,7 +47,10 @@ function nextModal() {
     }, 4500);
 }
 
-/* PDF */
+function closeAll() {
+    document.getElementById("modal2").style.display = "none";
+}
+
 function downloadPDF() {
 
     const { jsPDF } = window.jspdf;
@@ -54,18 +58,7 @@ function downloadPDF() {
 
     doc.text("T-MANNIOT RESERVATION", 20, 20);
     doc.text("Teatropica Island", 20, 30);
+    doc.text("Total: " + total + " T-t", 20, 40);
 
     doc.save("booking.pdf");
 }
-
-/* scroll animace */
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            sec.classList.add("show");
-        }
-    });
-});
