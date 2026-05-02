@@ -12,42 +12,57 @@
 <body>
 
 <header>
-    <img src="logo.png" class="logo">
+    <img src="images/logo.png" class="logo">
     <div>
         <h1>T-MANNIOT</h1>
-        <p>#1 Teatropica Hotel</p>
+        <p>#1 Teatropica Resort</p>
     </div>
 </header>
 
-<section>
+<section class="fade">
     <h2>O hotelu</h2>
     <p>
         Tropický minimalistický resort na ostrově Teatropica.
-        Prezidentka Taduše označila hotel jako budoucnost cestování.
+        Prezidentka Taduše ho označila za symbol moderního cestování.
     </p>
 </section>
 
-<section>
+<section class="fade">
     <h2>Pokoje</h2>
 
     <div class="card">
-        <img src="room1.jpg">
-        🌺 Palm Breeze — 5 T-t / noc
+        <img src="images/room1.jpg">
+        <div>
+            <h3>Palm Breeze</h3>
+            <p>5 T-t / noc</p>
+        </div>
     </div>
 
     <div class="card">
-        <img src="room2.jpg">
-        🌊 Ocean Pearl — 15 T-t / noc
+        <img src="images/room2.jpg">
+        <div>
+            <h3>Ocean Pearl</h3>
+            <p>15 T-t / noc</p>
+        </div>
     </div>
 
     <div class="card">
-        <img src="room3.jpg">
-        🌴 Sunset Villa — 30 T-t / noc
+        <img src="images/room3.jpg">
+        <div>
+            <h3>Sunset Villa</h3>
+            <p>30 T-t / noc</p>
+        </div>
     </div>
 
 </section>
 
-<section>
+<section class="fade">
+    <h2>Lokalita</h2>
+    <p>🌊 Waterpark v pěší vzdálenosti</p>
+    <p>✈️ Teatropica Airport (TTA)</p>
+</section>
+
+<section class="fade">
     <h2>Rezervace</h2>
 
     <form>
@@ -56,28 +71,14 @@
 
         <input type="email" placeholder="Email">
 
-        <label>Young (0–26)</label>
-        <select id="young">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+        <label>Young</label>
+        <input type="number" id="young" value="0">
 
-        <label>Adult (27–65)</label>
-        <select id="adult">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+        <label>Adult</label>
+        <input type="number" id="adult" value="0">
 
-        <label>Senior (66+)</label>
-        <select id="senior">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
+        <label>Senior</label>
+        <input type="number" id="senior" value="0">
 
         <label>Pokoj</label>
         <select id="room">
@@ -91,7 +92,7 @@
     </form>
 </section>
 
-<!-- CENA -->
+<!-- PRICE -->
 <div class="modal" id="modal1">
     <div class="modal-content">
         <h3>Cena</h3>
@@ -105,15 +106,15 @@
     <div class="modal-content">
         <h3>OVĚŘOVÁNÍ PŘES T-BANK</h3>
         <div class="loader"></div>
-        <p id="payStatus">Connecting...</p>
+        <p id="payStatus">Processing...</p>
     </div>
 </div>
 
-<!-- FINISH -->
+<!-- DONE -->
 <div class="modal" id="modal2">
     <div class="modal-content">
         <h3>Hotovo ✔</h3>
-        <button onclick="downloadPDF()">Stáhnout potvrzení</button>
+        <button onclick="downloadPDF()">Stáhnout</button>
         <button onclick="closeAll()">Zavřít</button>
     </div>
 </div>
