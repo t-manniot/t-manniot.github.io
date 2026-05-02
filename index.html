@@ -2,8 +2,7 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T-MANNIOT | Teatropica</title>
+<title>T-MANNIOT</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -12,7 +11,7 @@
 <body>
 
 <header>
-    <div class="overlay">
+    <div>
         <h1>T-MANNIOT</h1>
         <p>#1 Teatropica Hotel</p>
     </div>
@@ -21,37 +20,18 @@
 <section>
     <h2>O hotelu</h2>
     <p>
-        T-MANNIOT je nejluxusnější tropický hotel na ostrově Teatropica.
-        Kombinuje minimalistický design, přírodní krásu a absolutní klid.
-    </p>
-    <p class="quote">
-        „T-MANNIOT je symbol budoucnosti Teatropicy.“  
-        — prezidentka Teatropicy Taduše
+        T-MANNIOT je tropický luxusní hotel na ostrově Teatropica.
+        Prezidentka Taduše jej označila za „budoucnost cestování“.
     </p>
 </section>
 
 <section>
-    <h2>Pokoje</h2>
+    <h2>Tematické pokoje</h2>
 
-    <div class="card">Standard Room — 5 T-t / noc / osoba</div>
-    <div class="card">Luxury Room — 15 T-t / noc / osoba</div>
-    <div class="card">Suite — 30 T-t / noc / osoba</div>
+    <div class="card">🌺 Palm Breeze Room <br> 5 T-t / noc / osoba</div>
+    <div class="card">🌊 Ocean Pearl Suite <br> 15 T-t / noc / osoba</div>
+    <div class="card">🌴 Sunset Royal Villa <br> 30 T-t / noc / osoba</div>
 
-</section>
-
-<section>
-    <h2>Lokalita</h2>
-    <p>🌊 Jen pár minut od hotelu se nachází tropický waterpark.</p>
-    <p>✈️ 5 minut od Teatropica Airport (TTA)</p>
-    <p>Operují zde aerolinky: FlyTaduše (a brzy možná Hawaiian Air)</p>
-</section>
-
-<section>
-    <h2>Důležité</h2>
-    <p>
-        Ubytování je možné pouze pro hosty s platným Citizenship Agreement
-        nebo s letenkou od FlyTaduše.
-    </p>
 </section>
 
 <section>
@@ -59,46 +39,46 @@
 
     <form id="bookingForm">
 
-        <input type="text" placeholder="Jméno a příjmení" required>
+        <input type="number" id="persons" placeholder="Počet osob">
 
-        <label>Počet osob:</label>
-        <select id="ageGroup">
-            <option value="young">Young (0–26)</option>
-            <option value="adult">Adult (26–65)</option>
-            <option value="senior">Senior (65+)</option>
-        </select>
+        <label>Young</label>
+        <input type="number" id="young">
 
-        <input type="number" id="persons" placeholder="Počet osob" required>
+        <label>Adult</label>
+        <input type="number" id="adult">
 
-        <label>Od:</label>
-        <input type="date" id="from" required>
+        <label>Senior</label>
+        <input type="number" id="senior">
 
-        <label>Do:</label>
-        <input type="date" id="to" required>
-
-        <label>Typ pokoje:</label>
+        <label>Pokoj</label>
         <select id="room">
-            <option value="5">Standard (5 T-t)</option>
-            <option value="15">Luxury (15 T-t)</option>
-            <option value="30">Suite (30 T-t)</option>
+            <option value="5">Palm Breeze</option>
+            <option value="15">Ocean Pearl</option>
+            <option value="30">Sunset Villa</option>
         </select>
 
-        <div id="price">Celková cena: 0 T-t</div>
-
-        <button type="button" onclick="calculate()">Spočítat cenu</button>
-        <button type="submit">Potvrdit rezervaci</button>
+        <button type="button" onclick="openModal()">Potvrdit a zaplatit</button>
 
     </form>
-
 </section>
 
-<section id="result" class="hidden">
-    <h2>Rezervace potvrzena</h2>
-    <p id="summary"></p>
-    <button onclick="downloadPDF()">Stáhnout / Tisk</button>
-</section>
+<!-- POPUP 1 -->
+<div class="modal" id="modal1">
+    <div class="modal-content">
+        <h3>Cena</h3>
+        <p id="priceText"></p>
+        <button onclick="nextModal()">Zaplatit</button>
+    </div>
+</div>
+
+<!-- POPUP 2 -->
+<div class="modal" id="modal2">
+    <div class="modal-content">
+        <h3>Hotovo</h3>
+        <button onclick="downloadPDF()">Stáhnout potvrzení</button>
+    </div>
+</div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
