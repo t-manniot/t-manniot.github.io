@@ -65,8 +65,11 @@ const elements = document.querySelectorAll(".fade");
 window.addEventListener("scroll", () => {
     elements.forEach(el => {
         let top = el.getBoundingClientRect().top;
+
         if (top < window.innerHeight - 80) {
-            el.classList.add("show");
+            el.style.transform = "translateY(0)";
+            el.style.opacity = "1";
         }
     });
 });
+  
