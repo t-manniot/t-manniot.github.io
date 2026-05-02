@@ -24,8 +24,26 @@ function openModal() {
 }
 
 function nextModal() {
+
     document.getElementById("modal1").style.display = "none";
-    document.getElementById("modal2").style.display = "flex";
+
+    // SHOW FAKE PAYMENT
+    document.getElementById("paymentModal").style.display = "flex";
+
+    let status = document.getElementById("payStatus");
+
+    setTimeout(() => {
+        status.innerText = "Verifying Citizenship Agreement...";
+    }, 1500);
+
+    setTimeout(() => {
+        status.innerText = "Payment approved ✔";
+    }, 3000);
+
+    setTimeout(() => {
+        document.getElementById("paymentModal").style.display = "none";
+        document.getElementById("modal2").style.display = "flex";
+    }, 4500);
 }
 
 /* PDF */
