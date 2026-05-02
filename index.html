@@ -67,9 +67,10 @@
 
     <form>
 
-        <input type="text" placeholder="Jméno a příjmení">
+        <!-- důležité: ID doplněné kvůli JS -->
+        <input type="text" id="name" placeholder="Jméno a příjmení">
 
-        <input type="email" placeholder="Email">
+        <input type="email" id="email" placeholder="Email">
 
         <label>Young</label>
         <input type="number" id="young" value="0">
@@ -87,6 +88,7 @@
             <option value="30">Sunset Villa</option>
         </select>
 
+        <!-- důležité: JS funkce -->
         <button type="button" onclick="openModal()">Potvrdit a zaplatit</button>
 
     </form>
