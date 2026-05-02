@@ -1,58 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #dff6ff, #ffe6f0);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #dff6ff, #ffe6f0, #d0f4de);
+    color: #1d2b2d;
 }
 
+/* HEADER */
 header {
     height: 45vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg,#a8edea,#fed6e3);
+    justify-content: center;
     gap: 20px;
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
 }
 
 .logo {
-    width: 85px;
-    height: 85px;
+    width: 90px;
 }
 
-h1 {
-    font-size: 48px;
-}
-
+/* SECTIONS */
 section {
-    padding: 35px 20px;
-    max-width: 800px;
+    padding: 40px 20px;
+    max-width: 850px;
     margin: auto;
 }
 
-.card {
-    background: white;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 12px;
+/* FADE IN SCROLL */
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s;
 }
 
-.card img {
-    width: 120px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 8px;
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+/* HEADINGS */
+h2 {
+    color: #ff5fa2;
+}
+
+/* CARD POKOJE */
 .card {
     display: flex;
     gap: 15px;
     align-items: center;
+    background: white;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
 }
 
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* FORM */
 form {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
+    padding: 18px;
+    border-radius: 14px;
 }
 
 input, select {
@@ -64,15 +85,15 @@ input, select {
 }
 
 button {
-    background: #ff7eb3;
+    background: linear-gradient(135deg,#ff7eb3,#ff758c);
     color: white;
     border: none;
     padding: 12px;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -89,10 +110,11 @@ button {
     background: white;
     padding: 25px;
     border-radius: 16px;
-    text-align: center;
     width: 300px;
+    text-align: center;
 }
 
+/* LOADER */
 .loader {
     border: 4px solid #eee;
     border-top: 4px solid #ff7eb3;
