@@ -100,8 +100,9 @@ function downloadPDF() {
     img.onload = function () {
 
         // 🖼️ šablona na A4
-        doc.addImage(img, "PNG", 0, 0, 210, 297);
+       const offsetX = 8; // doladíš 5–15 podle potřeby
 
+doc.addImage(img, "PNG", offsetX, 0, 210, 297);
         let d = bookingData || {};
 
         // 🆔 ID rezervace
