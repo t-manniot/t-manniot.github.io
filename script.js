@@ -92,33 +92,54 @@ function closeAll() {
 function downloadPDF() {
 
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+    const doc = new jsPDF("p", "mm", "a4");
 
     let img = new Image();
     img.src = "template.png";
-
-    const sx = 1;
-    const sy = 1;
 
     img.onload = function () {
 
         const pageW = 210;
         const pageH = 297;
 
-        doc.addImage(img, "PNG", 0, 0, pageW, pageH);
+        // 🧠 vypočítáme poměr obrázku
+        const imgRatio = img.width / img.height;
+        const pageRatio = pageW / pageH;
+
+        let drawW, drawH, offsetX = 0, offsetY = 0;
+
+        if (imgRatio > pageRatio) {
+            // širší obrázek
+            drawW = pageW;
+            drawH = pageW / imgRatio;
+            offsetY = (pageH - drawH) / 2;
+        } else {
+            // vyšší obrázek
+            drawH = pageH;
+            drawW = pageH * imgRatio;
+            offsetX = (pageW - drawW) / 2;
+        }
+
+        // 🖼️ přesné centrování šablony
+        doc.addImage(img, "PNG", offsetX, offsetY, drawW, drawH);
 
         let d = bookingData || {};
 
-        doc.text(String(d.id || ""), 65 * sx, 22 * sy);
-        doc.text(String(d.name || ""), 45 * sx, 120 * sy);
-        doc.text(String(d.email || ""), 45 * sx, 138 * sy);
+        // 📌 TADY TEĎ MUSÍME MATCHNOUT SCALE
+        const sx = drawW / img.width;
+        const sy = drawH / img.height;
 
-        doc.text(String(d.young || 0), 125 * sx, 170 * sy);
-        doc.text(String(d.adult || 0), 125 * sx, 185 * sy);
-        doc.text(String(d.senior || 0), 125 * sx, 200 * sy);
+        // 🧾 TEXT (pixel-perfect podle obrázku)
+        doc.text(String(d.id || ""), 65 * sx + offsetX, 22 * sy + offsetY);
+        doc.text(String(d.name || ""), 45 * sx + offsetX, 120 * sy + offsetY);
+        doc.text(String(d.email || ""), 45 * sx + offsetX, 138 * sy + offsetY);
 
-        doc.text(String(d.room || ""), 35 * sx, 222 * sy);
-        doc.text(String(d.total || 0) + " T-t", 60 * sx, 250 * sy);
+        doc.text(String(d.young || 0), 125 * sx + offsetX, 170 * sy + offsetY);
+        doc.text(String(d.adult || 0), 125 * sx + offsetX, 185 * sy + offsetY);
+        doc.text(String(d.senior || 0), 125 * sx + offsetX, 200 * sy + offsetY);
+
+        doc.text(String(d.room || ""), 35 * sx + offsetX, 222 * sy + offsetY);
+        doc.text(String(d.total || 0) + " T-t", 60 * sx + offsetX, 250 * sy + offsetY);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
