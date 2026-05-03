@@ -183,3 +183,55 @@ window.downloadPDF = downloadPDF;
 window.addEventListener("load", () => {
     document.getElementById("dateFrom").min = new Date().toISOString().split("T")[0];
 });
+
+function calculatePrice() {
+
+    let room = parseInt(document.getElementById("room").value);
+
+    let young = parseInt(document.getElementById("young").value) || 0;
+    let adult = parseInt(document.getElementById("adult").value) || 0;
+    let senior = parseInt(document.getElementById("senior").value) || 0;
+
+    let fromValue = document.getElementById("dateFrom").value;
+    let toValue = document.getElementById("dateTo").value;
+
+    if (!fromValue || !toValue) {
+        alert("Vyber datumy");
+        return;
+    }
+
+    let from = new Date(fromValue);
+    let to = new Date(toValue);
+
+    let nights = (to - from) / (1000 * 60 * 60 * 24);
+
+    if (nights <= 0) {
+        alert("Špatné datumy");
+        return;
+    }
+
+    total =
+        ((young * room * 0.5) +
+        (adult * room) +
+        (senior * room * 0.25)) * nights;
+
+    document.getElementById("priceText").innerText =
+        "Celková cena: " + total + " T-t (" + nights + " nocí)";
+
+    document.getElementById("modal1").style.display = "flex";
+
+    // uložíme data
+    bookingData = {
+        id: Math.floor(Math.random() * 1000000),
+        name: document.querySelector("input[type='text']").value,
+        email: document.querySelector("input[type='email']").value,
+        young,
+        adult,
+        senior,
+        room: document.getElementById("room").selectedOptions[0].text,
+        total,
+        from: fromValue,
+        to: toValue,
+        nights
+    };
+}
