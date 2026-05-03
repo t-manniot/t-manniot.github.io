@@ -136,17 +136,17 @@ function downloadPDF() {
 
         doc.text(String(d.id || ""), 93, 20 );
         doc.text(String(d.name || ""), 78, 140 );
-        doc.text(String(d.email || ""), 90 + offsetX, 170 + offsetY);
+        doc.text(String(d.email || ""), 78, 154 );
 
-        doc.text("Od: " + d.from, 20, 160);
-        doc.text("Do: " + d.to, 20, 170);
+        doc.text("Od: " + d.from, 15, 14);
+        doc.text("Do: " + d.to, 15, 24 );
 
-        doc.text(String(d.young || 0), 145 + offsetX, 150 + offsetY);
-        doc.text(String(d.adult || 0), 145 + offsetX, 175 + offsetY);
-        doc.text(String(d.senior || 0), 145 + offsetX, 190 + offsetY);
+        doc.text(String(d.young || 0), 141, 174 );
+        doc.text(String(d.adult || 0), 141, 187 );
+        doc.text(String(d.senior || 0), 141, 200 );
 
-        doc.text(String(d.room || ""), 75 + offsetX, 225 + offsetY);
-        doc.text(String(d.total || 0) + " T-t", 90 + offsetX, 245 + offsetY);
+        doc.text(String(d.room || ""), 88, 221 );
+        doc.text(String(d.total || 0) + " T-t", 95, 241 );
 
         doc.save("T-MANNIOT-booking.pdf");
     };
