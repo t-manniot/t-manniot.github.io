@@ -111,28 +111,28 @@ function downloadPDF() {
         const offsetY = -5;    // ← POSUN NAHORU
 
         // 🆔 ID
-        doc.text(String(d.id || ""), 65 + offsetX, 22 + offsetY);
+        doc.text(String(d.id || ""), 85 + offsetX, 35 + offsetY);
 
         // 👤 jméno
-        doc.text(String(d.name || ""), 45 + offsetX, 120 + offsetY);
+        doc.text(String(d.name || ""), 65 + offsetX, 145 + offsetY);
 
         // 📧 email
-        doc.text(String(d.email || ""), 45 + offsetX, 138 + offsetY);
+        doc.text(String(d.email || ""), 65 + offsetX, 153 + offsetY);
 
         // 👶 young
-        doc.text(String(d.young || 0), 125 + offsetX, 170 + offsetY);
+        doc.text(String(d.young || 0), 135 + offsetX, 185 + offsetY);
 
         // 🧑 adult
-        doc.text(String(d.adult || 0), 125 + offsetX, 185 + offsetY);
+        doc.text(String(d.adult || 0), 135 + offsetX, 200 + offsetY);
 
         // 👴 senior
-        doc.text(String(d.senior || 0), 125 + offsetX, 200 + offsetY);
+        doc.text(String(d.senior || 0), 135 + offsetX, 215 + offsetY);
 
         // 🏝 pokoj
-        doc.text(String(d.room || ""), 35 + offsetX, 222 + offsetY);
+        doc.text(String(d.room || ""), 55 + offsetX, 232 + offsetY);
 
         // 💰 cena
-        doc.text(String(d.total || 0) + " T-t", 60 + offsetX, 250 + offsetY);
+        doc.text(String(d.total || 0) + " T-t", 75 + offsetX, 235 + offsetY);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
