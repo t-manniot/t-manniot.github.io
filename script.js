@@ -140,7 +140,6 @@ function downloadPDF() {
 
         doc.text("Od: " + d.from, 20, 160);
         doc.text("Do: " + d.to, 20, 170);
-        doc.text("Počet nocí: " + d.nights, 20, 180);
 
         doc.text(String(d.young || 0), 145 + offsetX, 150 + offsetY);
         doc.text(String(d.adult || 0), 145 + offsetX, 175 + offsetY);
