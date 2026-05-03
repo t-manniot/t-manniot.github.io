@@ -111,7 +111,7 @@ function downloadPDF() {
         const offsetY = -5;    // ← POSU NAHORU
 
         // 🆔 ID
-        doc.text(String(d.id || ""), 116.5 + offsetX, 13.5 + offsetY);
+        doc.text(String(d.id || ""), 93 + offsetX, 18 + offsetY);
 
         // 👤 jméno
         doc.text(String(d.name || ""), 90 + offsetX, 140 + offsetY);
