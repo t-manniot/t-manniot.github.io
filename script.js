@@ -129,6 +129,10 @@ function downloadPDF() {
         // 👤 jméno
         doc.text(String(d.name || ""), 90 + offsetX, 140 + offsetY);
 
+        doc.text("Od: " + d.from, 20, 160);
+        doc.text("Do: " + d.to, 20, 170);
+        doc.text("Počet nocí: " + d.nights, 20, 180);
+
         // 📧 email
         doc.text(String(d.email || ""), 90 + offsetX, 170 + offsetY);
 
