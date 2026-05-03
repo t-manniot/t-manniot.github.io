@@ -179,3 +179,7 @@ window.openModal = openModal;
 window.nextModal = nextModal;
 window.closeAll = closeAll;
 window.downloadPDF = downloadPDF;
+
+window.addEventListener("load", () => {
+    document.getElementById("dateFrom").min = new Date().toISOString().split("T")[0];
+});
