@@ -108,31 +108,31 @@ function downloadPDF() {
 
         // 🔥 FINÁLNÍ OFFSET (doladěno podle tvého PDF)
         const offsetX = -20;   // ← POSUN DOLEVA
-        const offsetY = -5;    // ← POSUN NAHORU
+        const offsetY = -5;    // ← POSU NAHORU
 
         // 🆔 ID
-        doc.text(String(d.id || ""), 85 + offsetX, 35 + offsetY);
+        doc.text(String(d.id || ""), 100 + offsetX, 25 + offsetY);
 
         // 👤 jméno
-        doc.text(String(d.name || ""), 65 + offsetX, 145 + offsetY);
+        doc.text(String(d.name || ""), 90 + offsetX, 140 + offsetY);
 
         // 📧 email
-        doc.text(String(d.email || ""), 65 + offsetX, 153 + offsetY);
+        doc.text(String(d.email || ""), 90 + offsetX, 170 + offsetY);
 
         // 👶 young
-        doc.text(String(d.young || 0), 135 + offsetX, 185 + offsetY);
+        doc.text(String(d.young || 0), 145 + offsetX, 150 + offsetY);
 
         // 🧑 adult
-        doc.text(String(d.adult || 0), 135 + offsetX, 200 + offsetY);
+        doc.text(String(d.adult || 0), 145 + offsetX, 175 + offsetY);
 
         // 👴 senior
-        doc.text(String(d.senior || 0), 135 + offsetX, 215 + offsetY);
+        doc.text(String(d.senior || 0), 145 + offsetX, 190 + offsetY);
 
         // 🏝 pokoj
-        doc.text(String(d.room || ""), 55 + offsetX, 232 + offsetY);
+        doc.text(String(d.room || ""), 75 + offsetX, 225 + offsetY);
 
         // 💰 cena
-        doc.text(String(d.total || 0) + " T-t", 75 + offsetX, 235 + offsetY);
+        doc.text(String(d.total || 0) + " T-t", 90 + offsetX, 245 + offsetY);
 
         doc.save("T-MANNIOT-booking.pdf");
     };
