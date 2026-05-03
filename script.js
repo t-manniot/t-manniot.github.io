@@ -71,7 +71,7 @@ function calculatePrice() {
         young,
         adult,
         senior,
-        room,
+        room: document.getElementById("room").selectedOptions[0].text,
         total
     };
 
