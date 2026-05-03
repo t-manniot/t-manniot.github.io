@@ -135,7 +135,7 @@ function downloadPDF() {
         const offsetY = -5;
 
         doc.text(String(d.id || ""), 93, 20 );
-        doc.text(String(d.name || ""), 90 + offsetX, 140 + offsetY);
+        doc.text(String(d.name || ""), 78, 140 );
         doc.text(String(d.email || ""), 90 + offsetX, 170 + offsetY);
 
         doc.text("Od: " + d.from, 20, 160);
