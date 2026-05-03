@@ -28,19 +28,29 @@ function generateID() {
 }
 
 /* PRICE */
-function openModal() {
+let room = parseInt(document.getElementById("room").value);
 
-    let room = parseInt(document.getElementById("room").value);
+let young = parseInt(document.getElementById("young").value) || 0;
+let adult = parseInt(document.getElementById("adult").value) || 0;
+let senior = parseInt(document.getElementById("senior").value) || 0;
 
-    let young = parseInt(document.getElementById("young").value) || 0;
-    let adult = parseInt(document.getElementById("adult").value) || 0;
-    let senior = parseInt(document.getElementById("senior").value) || 0;
+// 📅 datumy
+let from = new Date(document.getElementById("dateFrom").value);
+let to = new Date(document.getElementById("dateTo").value);
 
-    total =
-        (young * room * 0.5) +
-        (adult * room) +
-        (senior * room * 0.25);
+// 🧠 počet nocí
+let nights = (to - from) / (1000 * 60 * 60 * 24);
 
+if (nights <= 0 || isNaN(nights)) {
+    alert("Zadej správné datumy");
+    return;
+}
+
+// 💰 výpočet ceny
+total =
+    ((young * room * 0.5) +
+    (adult * room) +
+    (senior * room * 0.25)) * nights;
     bookingID = generateID();
 
     bookingData = {
