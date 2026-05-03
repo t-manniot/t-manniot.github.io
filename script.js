@@ -34,15 +34,21 @@ let young = parseInt(document.getElementById("young").value) || 0;
 let adult = parseInt(document.getElementById("adult").value) || 0;
 let senior = parseInt(document.getElementById("senior").value) || 0;
 
-// 📅 datumy
-let from = new Date(document.getElementById("dateFrom").value);
-let to = new Date(document.getElementById("dateTo").value);
+let fromValue = document.getElementById("dateFrom").value;
+let toValue = document.getElementById("dateTo").value;
 
-// 🧠 počet nocí
+if (!fromValue || !toValue) {
+    alert("Vyber datum příjezdu a odjezdu");
+    return;
+}
+
+let from = new Date(fromValue);
+let to = new Date(toValue);
+
 let nights = (to - from) / (1000 * 60 * 60 * 24);
 
-if (nights <= 0 || isNaN(nights)) {
-    alert("Zadej správné datumy");
+if (nights <= 0) {
+    alert("Datum odjezdu musí být později než příjezdu");
     return;
 }
 
